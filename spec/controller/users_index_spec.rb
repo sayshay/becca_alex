@@ -10,4 +10,19 @@ RSpec.describe UsersController, :type => :controller do
       expect(response.status).to eq(200)
     end
   end
+  
+  describe "Get users profile page " do 
+    it "returns 200 status when users link is clicked on" do
+      user = User.create(first_name: "Joe")
+      get :show, :id => user.id
+      expect(response).to be_success
+      expect(assigns(:user)).to eq(user)
+    end
+    
+    it "displays name of the user" do 
+      user = User.create(first_name: "Joe")
+      get :show, :id => user.id
+      expect(assigns(:user).first_name).to eq("Joe")
+    end
+  end
 end
