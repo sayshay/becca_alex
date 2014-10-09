@@ -1,1 +1,9 @@
 Welcome 
+<ul>
+  <% @users.each do |user| %>
+  <% p user %>
+    <li> <%= link_to user.first_name, user_path(user) %> 
+        <%= link_to "delete", method: :delete %>
+    </li>
+    <% end %>
+</ul>
