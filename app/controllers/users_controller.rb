@@ -13,14 +13,16 @@ class UsersController < ApplicationController
     @user = User.new
   end
   
+  def edit
+    @user = User.find(params[:id])
+  end
+  
   def create
-   @user = User.create(user_params)
-    # if @user.save    
-    #   redirect_to "/users"
-    # else
-    #   render :new
-    # end
-    redirect_to "/users/#{@user.id}"
+    if @user.save    
+      redirect_to "/users"
+    else
+      render :new
+    end   
   end
   
   def destroy
